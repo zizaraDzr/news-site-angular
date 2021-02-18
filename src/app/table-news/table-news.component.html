@@ -1,0 +1,6 @@
+<div *ngIf="!loading">
+  <div *ngFor="let item of newsService.news">
+      <span>{{item.title}}</span>
+  </div>
+</div>
+<div *ngIf="loading">Загрузка</div>
