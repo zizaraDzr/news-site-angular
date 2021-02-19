@@ -3,16 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FilterNewsComponent } from './filter-news/filter-news.component';
 import {FormsModule} from "@angular/forms";
 import { TableNewsComponent } from './table-news/table-news.component';
 import {HttpClientModule} from "@angular/common/http";
+import {TableFilterPipe} from "./shared/table-filter.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterNewsComponent,
-    TableNewsComponent
+    TableNewsComponent,
+    TableFilterPipe
   ],
   imports: [
     BrowserModule,
