@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {delay, tap} from "rxjs/operators";
+import {delay} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {NewsService} from "../shared/news.service";
 
 export interface listNews {
   id: string,
@@ -25,29 +25,19 @@ export class TableNewsComponent implements OnInit {
   loading: boolean = true
   filter: string = ''
   listNews: listNews[] = []
-  constructor( private http: HttpClient) {}
 
+  constructor( private http: HttpClient, private newsService: NewsService) {}
 
   ngOnInit(): void {
-    this.getNews()
-      .pipe(delay(2000))
-      .subscribe(() => {
+    this.newsService.downloadNews()
+      // .pipe(delay(1000))
+      .subscribe((data) => {
+        this.listNews = data
         this.loading = false
       })
-    console.log(this.listNews)
   }
   clearFilter() {
     this.filter =''
   }
-  getNews(): Observable<listNews[]> {
-    return this.http.get<listNews[]>('https://test.spaceflightnewsapi.net/api/v2/articles?_limit=30')
-      .pipe(tap( item => {
-        this.listNews = item
-      } ))
-  }
-  search(data: string) {
-    console.log('search', data, this.listNews)
-  }
-
 
 }

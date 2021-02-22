@@ -1,0 +1,26 @@
+.button {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 70px;
+  height: 30px;
+  outline: none;
+  background: #ddd;
+  text-align: center;
+  line-height: 28px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration-line: none;
+}
+figure {
+  background: #d9dabb;
+  display: block;
+  margin: 0 10px 10px 0;
+  text-align: center;
+}
+figure p {
+  margin-bottom: 0;
+}
+
+
+

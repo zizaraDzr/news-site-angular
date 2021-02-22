@@ -1,0 +1,9 @@
+<a [routerLink]="''" class="button">Назад</a>
+<p>{{fullNews.summary}}</p>
+<figure>
+  <p><img src="{{fullNews.imageUrl}}" width="350" height="250" alt="{{fullNews.title}}"></p>
+  <figcaption>{{fullNews.title}}
+    <p>{{fullNews.updatedAt | date:'d.MM.yy, h:mm:ss'}}</p>
+  </figcaption>
+</figure>
+

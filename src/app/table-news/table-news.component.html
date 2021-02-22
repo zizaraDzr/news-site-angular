@@ -3,27 +3,34 @@
     type="text"
     placeholder="Поиск"
     [(ngModel)]="filter"
-    (keydown.enter)="search(filter)"
   >
   <button (click)="clearFilter()">Очистить</button>
 </div>
+
 <div *ngIf="!loading">
-  <table class="table">
+
+  <table class="table" *ngIf="(listNews | tableFilter: filter).length; else noData">
     <thead>
       <tr>
-        <th>title</th>
-        <th>newsSite</th>
-        <th>publishedAt</th>
+        <th>Заголовок</th>
+        <th>Источник</th>
+        <th>Дата публикации</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of listNews | tableFilter: filter">
-        <td>{{item.title}}</td>
+        <td>
+          <a routerLinkActive="active" [routerLink]="['fullNews', item.id]">{{item.title}}</a>
+        </td>
         <td>{{item.newsSite}}</td>
-        <td>{{item.publishedAt}}</td>
-  <!--      <td><input type="checkbox" [(ngModel)]="item.done" /></td>-->
+        <td>{{item.publishedAt | tableFormatDate: item.publishedAt}}</td>
       </tr>
     </tbody>
   </table>
+
+  <ng-template #noData>
+    <div >Ничего не найдено</div>
+  </ng-template>
+
 </div>
-<div *ngIf="loading">Загрузка</div>
+<div class="spinner" *ngIf="loading"></div>
