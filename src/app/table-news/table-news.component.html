@@ -19,9 +19,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of listNews | tableFilter: filter">
-        <td>
-          <a routerLinkActive="active" [routerLink]="['fullNews', item.id]">{{item.title}}</a>
-        </td>
+        <td class="td_text" routerLinkActive="active" [routerLink]="['fullNews', item.id]">{{item.title}}</td>
         <td>{{item.newsSite}}</td>
         <td>{{item.publishedAt | tableFormatDate: item.publishedAt}}</td>
       </tr>

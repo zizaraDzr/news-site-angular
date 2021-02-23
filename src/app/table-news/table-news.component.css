@@ -91,6 +91,10 @@ thead{
   border-radius: 100%;
   animation: spin 600ms infinite linear;
 }
-
+.td_text:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  outline: none;
+}
 
 
